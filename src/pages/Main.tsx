@@ -1,17 +1,18 @@
-import { AboutCorner, AstroCorner } from "@components";
+import { AboutCorner, AstroCorner, ForecastCorner } from "@components";
 import React, { useEffect, useState } from "react";
+import { CoordArray, Fetched } from "common-types";
 
 function Main() {
   // State to contain fetched data.
-  const [data, setData] = useState([]);
+  const [data, setData] = useState<Fetched.Dataseries>([]);
   // State to contain the date at which data was initialized.
   const [date, setDate] = useState<Date>(new Date());
   // State to check if dataset might be outdated.
-  const [outdated, setOutdated] = useState<Boolean>(false);
+  const [outdated, setOutdated] = useState<boolean>(false);
   // State to store cooridnates.
-  const [coords, setCoords] = useState<[Number, Number]>([103.82, 1.352]);
+  const [coords, setCoords] = useState<CoordArray>([103.82, 1.352]);
   // State to check if dataset is loaded.
-  const [loading, setLoading] = useState<Boolean>(!data[0]);
+  const [loading, setLoading] = useState<boolean>(!data[0]);
 
   // GET method specific to 7timer API.
   async function getData() {
