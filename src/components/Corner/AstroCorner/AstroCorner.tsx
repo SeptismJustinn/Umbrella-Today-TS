@@ -1,12 +1,12 @@
 import React from "react";
-import cornerStyle from "./Corner.module.css";
+import styles from "@styles/AstroCorner.module.css";
+import cornerStyle from "@styles/Corner.module.css";
 import { NavLink } from "react-router-dom";
-
-import styles from "./AstroCorner.module.css";
+import { CoordArray } from "common-types";
 
 interface AstroCornerProps {
-  coords: [Number, Number];
-  raining: Boolean;
+  coords: CoordArray;
+  raining: boolean;
 }
 
 function AstroCorner(props: AstroCornerProps) {

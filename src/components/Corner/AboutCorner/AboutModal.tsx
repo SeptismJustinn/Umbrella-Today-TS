@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
 import ReactDOM from "react-dom";
-import styles from "./Modal.module.css";
+import styles from "@styles/Modal.module.css";
 
 interface AboutModalProps {
   setShowAbout: Function;
 }
 
 function Overlay(props: AboutModalProps) {
-  const [active, setActive] = useState(false);
+  const [active, setActive] = useState<boolean>(false);
   function handleClose() {
     setActive(() => {
       setTimeout(() => {

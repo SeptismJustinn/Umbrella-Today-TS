@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import cornerStyle from "./Corner.module.css";
+import cornerStyle from "@styles/Corner.module.css";
 import AboutModal from "./AboutModal";
 
 function AboutCorner() {
   // State to toggle modal display.
-  const [showAbout, setShowAbout] = useState(false);
+  const [showAbout, setShowAbout] = useState<boolean>(false);
 
   return (
     <>
