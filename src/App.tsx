@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { Astronomy, Main } from "@pages";
 import { Route, Routes } from "react-router-dom";
-import Main from "@pages/Main";
 import DataContext from "@helpers/DataContext";
 import { CoordArray, Fetched } from "common-types";
 
 function App() {
   // State to contain fetched data.
-  const [data, setData] = useState<Fetched.Dataseries>([]);
+  const [data, setData] = useState<Fetched.CivilDataseries>([]);
   // State to contain the date at which data was initialized.
   const [date, setDate] = useState<Date>(new Date());
   // State to check if dataset might be outdated.
@@ -81,6 +81,7 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/astronomy" element={<Astronomy />} />
         </Routes>
       </DataContext.Provider>
     </>
