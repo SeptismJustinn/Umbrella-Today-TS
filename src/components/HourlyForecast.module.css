@@ -1,0 +1,19 @@
+.next_day {
+  background-color: rgba(220, 255, 220, 0.5);
+}
+
+.third_day {
+  background-color: rgba(220, 220, 255, 0.5);
+}
+
+.prec_text {
+  color: blue;
+}
+
+.danger_text {
+  color: red;
+}
+
+li {
+  margin-bottom: 10px;
+}

@@ -1,0 +1,28 @@
+.centered {
+  display: flex;
+  flex-direction: column;
+}
+
+.centered a {
+  margin: 20px auto;
+}
+
+.centered div {
+  text-align: center;
+  font-size: 3vw;
+  color: aliceblue;
+}
+
+img {
+  max-width: 80vh;
+  max-height: 80vh;
+}
+
+.centered img {
+  border: 2px solid rgba(0, 0, 0, 0);
+}
+
+.centered img:hover {
+  border: 2px solid rgba(10, 10, 10, 0.2);
+  border-radius: 20px;
+}
