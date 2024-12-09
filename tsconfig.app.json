@@ -12,7 +12,8 @@
     "paths": {
       "@components": ["components/index.ts"],
       "@pages/*": ["pages/*"],
-      "@styles/*": ["styles/*"]
+      "@styles/*": ["styles/*"],
+      "@helpers/*": ["helpers/*"]
     },
 
     /* Bundler mode */
