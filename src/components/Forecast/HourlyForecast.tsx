@@ -1,5 +1,6 @@
 import React from "react";
-import styles from "./HourlyForecast.module.css";
+import styles from "@styles/HourlyForecast.module.css";
+import { Fetched } from "common-types";
 
 // === Static values from https://www.7timer.info/doc.php?lang=en ===
 // Average rainfall mm/hr (0-9)
@@ -29,7 +30,7 @@ const cloudiness = [
 ];
 
 // Function takes in "weather" string from data set and converts it into human readable string.
-function decipherWeather(datasetString) {
+function decipherWeather(datasetString: string) {
   let string = datasetString;
   let output;
   // Check if unique prefix was identified.
@@ -100,7 +101,7 @@ function decipherWeather(datasetString) {
 }
 
 // Function takes in prec_type string and converts it into human readable form
-function decipherPrecipitation(datasetString) {
+function decipherPrecipitation(datasetString: string) {
   let output = "";
   switch (datasetString) {
     case "rain":
@@ -124,37 +125,49 @@ function decipherPrecipitation(datasetString) {
 
 // ======
 
-function HourlyForecast(props) {
+interface HourlyForecastProps {
+  key: number;
+  id: number;
+  time: number;
+  nextDay: boolean;
+  thirdDay: boolean;
+  data: Fetched.CivilData;
+}
+
+function HourlyForecast(props: HourlyForecastProps) {
   return (
     <div
-      className={`row ${props.thirdDay ? styles.third_day : props.nextDay ? styles.next_day : ""
-        }`}
+      className={`row ${
+        props.thirdDay ? styles.third_day : props.nextDay ? styles.next_day : ""
+      }`}
     >
       <div className="col-md-1">
         {props.time < 12
           ? (props.time || 12) + "AM"
           : (props.time % 12 || 12) + "PM"}
       </div>
-      <div className="col-md-2">{decipherWeather(props.forecast)}</div>
+      <div className="col-md-2">{decipherWeather(props.data.weather)}</div>
       <div
-        className={`col-md-2 ${props.precType === "none"
-          ? ""
-          : props.precType === "rain" || props.precType === "snow"
+        className={`col-md-2 ${
+          props.data.prec_type === "none"
+            ? ""
+            : props.data.prec_type === "rain" || props.data.prec_type === "snow"
             ? styles.prec_text
             : styles.danger_text
-          }`}
+        }`}
       >
-        {decipherPrecipitation(props.precType)}
+        {decipherPrecipitation(props.data.prec_type)}
       </div>
       <div className="col-md-2">
-        {precipitationRates[props.prec] + (props.prec === 0 ? "" : "mm/hr")}
+        {precipitationRates[props.data.prec_amount] +
+          (props.data.prec_amount === 0 ? "" : "mm/hr")}
       </div>
-      <div className="col-md-2">{cloudiness[props.cloudcover - 1]}</div>
+      <div className="col-md-2">{cloudiness[props.data.cloudcover - 1]}</div>
       <div className="col-md-2">
-        {props.temp}
+        {props.data.temp2m}
         <span>&#8451;</span>
       </div>
-      <div className="col-md-1">{props.humidity}</div>
+      <div className="col-md-1">{props.data.rh2m}</div>
     </div>
   );
 }
