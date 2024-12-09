@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Astronomy, Main } from "@pages";
 import { Route, Routes } from "react-router-dom";
+import { Astronomy, Forecast, Main } from "@pages";
 import DataContext from "@helpers/DataContext";
 import { CoordArray, Fetched } from "common-types";
 
@@ -81,6 +81,7 @@ function App() {
       >
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/forecast" element={<Forecast />} />
           <Route path="/astronomy" element={<Astronomy />} />
         </Routes>
       </DataContext.Provider>
