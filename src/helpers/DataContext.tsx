@@ -2,7 +2,7 @@ import { CoordArray, Fetched } from "common-types";
 import React from "react";
 
 export interface DataContextProps {
-  data: Fetched.Dataseries;
+  data: Fetched.CivilDataseries;
   date: Date;
   coords: CoordArray;
   setCoords: Function;
