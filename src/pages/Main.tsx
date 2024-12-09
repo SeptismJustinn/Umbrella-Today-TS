@@ -1,4 +1,9 @@
-import { AboutCorner, AstroCorner, ForecastCorner } from "@components";
+import {
+  AboutCorner,
+  AstroCorner,
+  ForecastCorner,
+  LocationCorner,
+} from "@components";
 import React, { useEffect, useState } from "react";
 import { CoordArray, Fetched } from "common-types";
 
