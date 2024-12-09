@@ -1,15 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import cornerStyle from "@styles/Corner.module.css";
 import LocationModal from "./LocationModal";
-import { CoordArray } from "common-types";
+import DataContext from "@helpers/DataContext";
 
-interface LocationCornerProps {
-  coords: CoordArray;
-  setCoords: Function;
-  setLoading: Function;
-}
-
-function LocationCorner(props: LocationCornerProps) {
+function LocationCorner() {
+  const { coords, setCoords, setLoading } = useContext(DataContext);
   // State to toggle modal display
   const [showLocation, setShowLocation] = useState<boolean>(false);
   // State to track current location to be displayed
@@ -28,17 +23,17 @@ function LocationCorner(props: LocationCornerProps) {
           : currLocation === "Current"
           ? "Current Location"
           : "Singapore " + currLocation}
-        <br />({props.coords[0]} , {props.coords[1]})
+        <br />({coords[0]} , {coords[1]})
       </div>
 
       {showLocation && (
         <LocationModal
-          setCoords={props.setCoords}
-          coords={props.coords}
+          setCoords={setCoords}
+          coords={coords}
           currLocation={currLocation}
           setCurrLocation={setCurrLocation}
           setShowLocation={setShowLocation}
-          setLoading={props.setLoading}
+          setLoading={setLoading}
         />
       )}
     </>

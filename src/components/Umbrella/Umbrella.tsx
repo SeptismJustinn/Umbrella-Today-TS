@@ -1,25 +1,21 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import styles from "@styles/Umbrella.module.css";
 import CircularProgress from "@mui/material/CircularProgress";
-import { CoordArray, Fetched } from "common-types";
+import DataContext from "@helpers/DataContext";
 
 interface UmbrellaProps {
-  data: Fetched.Dataseries;
-  date: Date;
-  coords: CoordArray;
-  loading: boolean;
-  outdated: boolean;
   raining: boolean;
 }
 
 function Umbrella(props: UmbrellaProps) {
+  const { data, date, coords, outdated, loading } = useContext(DataContext);
   // Function to determine what image to display
   function displayImage() {
-    if (props.loading) {
+    if (loading) {
       // Loading spinner
       return <CircularProgress size="70vh" />;
-    } else if (props.outdated) {
+    } else if (outdated) {
       // Error if database outdated or failed to fetch properly
       return <img src="/umbrella_error.png" alt="Outdated dataset" />;
     } else {
@@ -34,10 +30,10 @@ function Umbrella(props: UmbrellaProps) {
   }
 
   function displayMessage() {
-    if (props.loading) {
+    if (loading) {
       // No message while loading
       return;
-    } else if (props.outdated) {
+    } else if (outdated) {
       // Contingency message if error/outdated
       return (
         <>
@@ -61,9 +57,9 @@ function Umbrella(props: UmbrellaProps) {
     <div className={`${styles.centered}`}>
       <NavLink
         to="/forecast"
-        state={{ data: props.data, date: props.date, coords: props.coords }}
+        state={{ data: data, date: date, coords: coords }}
         onClick={(event) => {
-          if (props.loading) {
+          if (loading) {
             // Prevent navigation if still loading data.
             event.preventDefault();
           }

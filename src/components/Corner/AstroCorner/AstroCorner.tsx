@@ -1,22 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
 import styles from "@styles/AstroCorner.module.css";
 import cornerStyle from "@styles/Corner.module.css";
 import { NavLink } from "react-router-dom";
-import { CoordArray } from "common-types";
+import DataContext from "@helpers/DataContext";
 
 interface AstroCornerProps {
-  coords: CoordArray;
   raining: boolean;
 }
 
 function AstroCorner(props: AstroCornerProps) {
+  const { coords } = useContext(DataContext);
+
   // Check system time if it is daytime.
   function checkDaytime() {
     const time = new Date().getHours();
     return time > 6 && time < 18;
   }
   return (
-    <NavLink to="/astronomy" state={{ coords: props.coords }}>
+    <NavLink to="/astronomy" state={{ coords }}>
       <div className={`${styles.container} ${cornerStyle.topLeft}`}>
         <div
           className={`${styles.astral} ${

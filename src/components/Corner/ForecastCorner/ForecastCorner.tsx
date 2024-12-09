@@ -1,22 +1,17 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import cornerStyle from "@styles/Corner.module.css";
 import { CoordArray, Fetched } from "common-types";
+import DataContext from "@helpers/DataContext";
 
-interface ForecastCornerProps {
-  data: Fetched.Dataseries;
-  date: Date;
-  coords: CoordArray;
-  loading: boolean;
-}
-
-function ForecastCorner(props: ForecastCornerProps) {
+function ForecastCorner() {
+  const { data, date, coords, loading } = useContext(DataContext);
   return (
     <NavLink
       to="/forecast"
-      state={{ data: props.data, date: props.date, coords: props.coords }}
+      state={{ data, date, coords }}
       onClick={(event) => {
-        if (props.loading) {
+        if (loading) {
           // Prevent navigation if still loading data.
           event.preventDefault();
         }
