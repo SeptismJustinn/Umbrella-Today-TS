@@ -10,21 +10,21 @@ export namespace Fetched {
     // Lifted Index: -10 to 15
     lifted_index: number;
     // Precipitation Type: "snow", "rain", "frzr", "icep", "none"
-    prec_type: String;
+    prec_type: string;
     // Precipitation Amount: 0-9
-    prec_amount: Number;
+    prec_amount: number;
     // Temperature (celsius) at 2m: -76-60
-    temp2m: Number;
+    temp2m: number;
     // Relative Humidity at 2m: `${0-100}%`
-    rh2m: String;
+    rh2m: string;
     // Wind direction in 10m radius:
     // - direction of wind: "N", "NE", "E", "SE", "S", "SW", "W", "NW"
     // - wind speed: 1-8
-    wind10m: { direction: String; speed: Number };
+    wind10m: { direction: string; speed: number };
     // Weather predicted, "weather" + "day"/"night", weathers:
     // "clear", "pcloudy", "mcloudy", "cloudy", "humid", "lightrain", "oshower", "ishower",
     // "lightsnow", "rain", "snow", "rainsnow"
-    weather: String;
+    weather: string;
   }
   type Dataseries = Data[];
 }
