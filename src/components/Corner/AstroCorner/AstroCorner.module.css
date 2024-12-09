@@ -1,0 +1,50 @@
+.astral {
+  width: 20vh;
+  height: 20vh;
+  border-radius: 10vh;
+}
+.sun {
+  background-color: yellow;
+}
+.moon {
+  background-color: white;
+}
+
+.cloud_bottom,
+.cloud_bottomright,
+.cloud_right {
+  transition: linear 0.5s;
+  position: absolute;
+  top: 10vh;
+}
+
+.cloud_bottom {
+  z-index: 1;
+}
+
+.cloud_bottomright {
+  z-index: 2;
+  left: 8vh;
+}
+
+.cloud_right {
+  z-index: 3;
+  left: 10vh;
+  top: 4vh;
+}
+
+.container:hover > .cloud_bottom {
+  transition: linear 0.5s;
+  top: 15vh;
+}
+
+.container:hover > .cloud_bottomright {
+  transition: linear 0.5s;
+  left: 12vh;
+  top: 12vh;
+}
+
+.container:hover > .cloud_right {
+  transition: linear 0.5s;
+  left: 15vh;
+}
