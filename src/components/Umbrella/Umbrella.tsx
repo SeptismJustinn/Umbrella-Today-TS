@@ -1,9 +1,19 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import styles from "./Umbrella.module.css";
+import styles from "@styles/Umbrella.module.css";
 import CircularProgress from "@mui/material/CircularProgress";
+import { CoordArray, Fetched } from "common-types";
 
-function Umbrella(props) {
+interface UmbrellaProps {
+  data: Fetched.Dataseries;
+  date: Date;
+  coords: CoordArray;
+  loading: boolean;
+  outdated: boolean;
+  raining: boolean;
+}
+
+function Umbrella(props: UmbrellaProps) {
   // Function to determine what image to display
   function displayImage() {
     if (props.loading) {

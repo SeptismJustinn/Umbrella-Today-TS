@@ -3,6 +3,7 @@ import {
   AstroCorner,
   ForecastCorner,
   LocationCorner,
+  Umbrella,
 } from "@components";
 import React, { useEffect, useState } from "react";
 import { CoordArray, Fetched } from "common-types";
